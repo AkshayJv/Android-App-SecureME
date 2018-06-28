@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.secureme"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+ <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+   <uses-permission android:name="android.permission.READ_CONTACTS"/>
+   <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+   <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+   <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"></uses-permission>
+<uses-permission android:name="android.permission.WRITE_CALL_LOG"></uses-permission>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+         
+             
+        <activity android:name=".register"></activity>
+        <activity android:name=".display"></activity>
+        
+         
+        <receiver android:name=".SecureSMSReceiver">   
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name=".changeprofile" android:exported="true" > 
+			<intent-filter android:priority="999" > 
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+	        </intent-filter> 
+		</receiver>
+        
+        <receiver android:name=".changewifi" android:exported="true" > 
+			<intent-filter android:priority="999" > 
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+	        </intent-filter> 
+		</receiver>
+		
+        <receiver android:name=".changegps" android:exported="true" > 
+			<intent-filter android:priority="999" > 
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+	        </intent-filter> 
+		</receiver>
+		
+         <receiver android:name=".simchange">
+            <intent-filter>
+               <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+                </receiver>
+    
+        <receiver android:name=".incominggps" android:exported="true" > 
+			<intent-filter android:priority="999" > 
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+	        </intent-filter> 
+		</receiver>
+		
+        
+        
+        
+         <activity
+            android:name=".GMailSender"
+            android:label="@string/title_activity_gmail_sender" >
+        </activity>
+        <activity
+            android:name=".JSSEProvider"
+            android:label="@string/title_activity_jsseprovider" >
+        </activity>
+         
+        <receiver android:name=".incoming" android:exported="true" > 
+			<intent-filter android:priority="999" > 
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+	        </intent-filter> 
+		</receiver>
+    </application>
+
+</manifest>
